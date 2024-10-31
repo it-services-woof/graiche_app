@@ -16,7 +16,6 @@ export function SectionApp() {
 					objectFit="cover"
 					objectPosition="center"
 					className="md:scale-100 scale-[1.5] translate-y-[-20%] md:translate-y-0"
-					quality={100}
 				/>
 			</div>
 			<div className="w-full flex items-center justify-center flex-col gap-8 z-10">
@@ -46,7 +45,7 @@ export function SectionApp() {
 					/>
 				</div>
 			</div>
-			<div className="w-full md:mt-[60px] mt-[58px] flex items-center justify-center">
+			<div className="w-full md:mt-[60px] mt-[10px] flex items-center justify-center">
 				<Container className="relative flex items-center justify-between h-[681px] px-[30px] md:px-[148px]">
 					<div className="absolute inset-0 -z-10">
 						<Image
@@ -55,18 +54,18 @@ export function SectionApp() {
 							layout="fill"
 							objectFit="contain"
 							objectPosition="center"
-							quality={100}
+							priority
 						/>
 					</div>
 					<div className="flex items-end h-[70%]">
-						<div className="w-[160px] md:w-[235px] h-[110px] md:h-[128px] bg-[#FD0479] rounded-3xl flex items-center justify-center shadow-custom-pink px-[16px] py-[13px] md:px-6 md:py-5">
+						<div className="w-[160px] md:w-[235px] bg-[#FD0479] rounded-3xl flex items-center justify-center shadow-custom-pink px-[16px] py-[15px] md:px-6 md:py-5">
 							<span className="text-white max-w-[187px] text-xs md:text-[18px] font-semibold leading-normal tracking-[0.25px] text-center">
 								Identificação rápida do pet para segurança
 							</span>
 						</div>
 					</div>
 					<div className="flex items-start h-[70%]">
-						<div className="w-[160px] md:w-[235px] h-[110px] md:h-[128px] bg-[#FD0479] rounded-3xl flex items-center justify-center shadow-custom-pink px-[16px] py-[13px] md:px-6 md:py-5">
+						<div className="w-[160px] md:w-[235px] bg-[#FD0479] rounded-3xl flex items-center justify-center shadow-custom-pink px-[16px] py-[10px] md:px-6 md:py-5">
 							<span className="text-white max-w-[187px] text-xs md:text-[18px] font-semibold leading-normal tracking-[0.25px] text-center">
 								Informações compartilháveis do pet para maiores cuidados
 							</span>
