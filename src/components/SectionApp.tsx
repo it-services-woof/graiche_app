@@ -1,6 +1,6 @@
 import Image from "next/image";
-import AppStore from "@/assets/app-store.svg";
-import GooglePlay from "@/assets/google-play.svg";
+import AppStore from "@/assets/app-store.png";
+import GooglePlay from "@/assets/google-play.png";
 import Ellipse from "@/assets/ellipse.svg";
 import App from "@/assets/app.png";
 import { Container } from "./Container";
@@ -12,10 +12,10 @@ export function SectionApp() {
 				<Image
 					src={Ellipse}
 					alt="ellipse"
-					layout="fill"
-					objectFit="cover"
-					objectPosition="center"
-					className="md:scale-100 scale-[1.5] translate-y-[-20%] md:translate-y-0"
+					fill
+					className="object-cover md:scale-100 scale-[1.5] translate-y-[-20%] md:translate-y-0"
+					style={{ objectPosition: "top" }}
+					quality={100}
 				/>
 			</div>
 			<div className="w-full flex items-center justify-center flex-col gap-8 z-10">
@@ -51,9 +51,9 @@ export function SectionApp() {
 						<Image
 							src={App}
 							alt="app"
-							layout="fill"
-							objectFit="contain"
-							objectPosition="center"
+							fill
+							className="object-contain"
+							style={{ objectPosition: "center" }}
 						/>
 					</div>
 					<div className="flex items-end h-[70%]">
