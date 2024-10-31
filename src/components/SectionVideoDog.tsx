@@ -10,8 +10,8 @@ export function SectionVideoDog() {
 					className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto transform -translate-x-1/2 -translate-y-1/2 scale-125"
 				>
 					<source
-						src="https://graiche-public-assets.s3.us-east-1.amazonaws.com/video-dog.mp4"
-						type="video/mp4"
+						src="https://d3cxeuu31z1oec.cloudfront.net/videos-webm/dog-video.webm"
+						type="video/webm"
 					/>
 				</video>
 			</div>
@@ -24,8 +24,8 @@ export function SectionVideoDog() {
 					className="absolute top-0 left-0 w-full h-full object-cover transform scale-125"
 				>
 					<source
-						src="https://graiche-public-assets.s3.us-east-1.amazonaws.com/video-dog.mp4"
-						type="video/mp4"
+						src="https://d3cxeuu31z1oec.cloudfront.net/videos-webm/dog-video.webm"
+						type="video/webm"
 					/>
 				</video>
 			</div>
