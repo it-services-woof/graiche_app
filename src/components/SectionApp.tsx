@@ -45,7 +45,7 @@ export function SectionApp() {
 					/>
 				</div>
 			</div>
-			<div className="w-full md:mt-[60px] mt-[10px] flex items-center justify-center">
+			<div className="w-full flex items-center justify-center mt-0 md:mt-[60px]">
 				<Container className="relative flex items-center justify-between h-[681px] px-[30px] md:px-[148px]">
 					<div className="absolute inset-0 -z-10">
 						<Image
