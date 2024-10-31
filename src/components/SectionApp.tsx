@@ -2,7 +2,7 @@ import Image from "next/image";
 import AppStore from "@/assets/app-store.svg";
 import GooglePlay from "@/assets/google-play.svg";
 import Ellipse from "@/assets/ellipse.svg";
-import App from "@/assets/app.svg";
+import App from "@/assets/app.png";
 import { Container } from "./Container";
 
 export function SectionApp() {
@@ -54,7 +54,6 @@ export function SectionApp() {
 							layout="fill"
 							objectFit="contain"
 							objectPosition="center"
-							priority
 						/>
 					</div>
 					<div className="flex items-end h-[70%]">
