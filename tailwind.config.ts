@@ -58,6 +58,7 @@ const config: Config = {
 			},
 			boxShadow: {
 				"custom-pink": "0px 0px 50px 0px #FD0479",
+				"text-shadow": "0px 0px 53.5px #FD0479",
 			},
 		},
 	},

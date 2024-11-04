@@ -1,6 +1,7 @@
 import { SectionApp } from "@/components/SectionApp";
 import { SectionAwards } from "@/components/SectionAwards";
 import { SectionBenefits } from "@/components/SectionBenefits";
+import { SectionCalculator } from "@/components/SectionCalculator";
 import { SectionDog } from "@/components/SectionDog";
 import { SectionOffers } from "@/components/SectionOffers";
 import { SectionQuestions } from "@/components/SectionQuestions";
@@ -16,6 +17,7 @@ export default function Home() {
 			<SectionDog />
 			<SectionBenefits />
 			<SectionOffers />
+			<SectionCalculator />
 		</section>
 	);
 }

@@ -8,7 +8,7 @@ import { Container } from "./Container";
 export function SectionApp() {
 	return (
 		<section className="relative flex flex-col items-center justify-center w-full h-[1062px] md:h-[1227px]">
-			<div className="absolute inset-0 -z-10">
+			<div className="absolute inset-0 -z-10 overflow-hidden">
 				<Image
 					src={Ellipse}
 					alt="ellipse"
