@@ -1,0 +1,12 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 501">
+<circle id="Ellipse 94" cx="16" cy="16" r="16" fill="#FFF0F8"/>
+<g id="Group 3">
+<path id="Ellipse 20" d="M22.6346 19.5813C22.6346 23.1264 19.7608 26.0002 16.2158 26.0002C12.6707 26.0002 9.79688 23.1264 9.79688 19.5813C9.79688 16.0363 12.6707 14.5889 16.2158 14.5889C19.7608 14.5889 22.6346 16.0363 22.6346 19.5813Z" fill="#FD0479"/>
+<ellipse id="Ellipse 21" cx="19.0666" cy="10.3094" rx="2.13963" ry="2.85284" transform="rotate(15 19.0666 10.3094)" fill="#FD0479"/>
+<ellipse id="Ellipse 25" cx="24.0594" cy="13.1366" rx="2.13963" ry="2.85284" transform="rotate(30 24.0594 13.1366)" fill="#FD0479"/>
+<ellipse id="Ellipse 23" cx="13.3637" cy="10.3093" rx="2.13963" ry="2.85284" transform="rotate(-15 13.3637 10.3093)" fill="#FD0479"/>
+<ellipse id="Ellipse 24" cx="8.36923" cy="13.1367" rx="2.13963" ry="2.85284" transform="rotate(-30 8.36923 13.1367)" fill="#FD0479"/>
+</g>
+</g>
+</svg>
