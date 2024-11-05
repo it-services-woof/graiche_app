@@ -12,6 +12,8 @@ import {
 import EllipseApp from "@/assets/ellipse-app.svg";
 import GoogleCloud from "@/assets/google-cloud.webp";
 import GoogleCloudBlog from "@/assets/google-cloud-blog.webp";
+import QrCode from "@/assets/qr-code.webp";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -31,8 +33,31 @@ export function SectionFrequentlyQuestions() {
 		resolver: zodResolver(QuestionSchema),
 	});
 
-	const onSubmit = (data: QuestionType) => {
-		console.log(data);
+	const onSubmit = async (data: QuestionType) => {
+		const payload = {
+			nome: data.name,
+			email: data.email,
+			telefone: data.telefone,
+			assunto: data.assunto,
+			mensagem: data.mensagem,
+		};
+
+		try {
+			const response = await fetch(
+				"https://woof.app.n8n.cloud/webhook/e2680a7e-fdd9-43e3-bd85-d25d8bb03e61",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(payload),
+				},
+			);
+
+			console.log(response);
+		} catch (error) {
+			console.error("Erro", error);
+		}
 	};
 
 	return (
@@ -258,7 +283,7 @@ export function SectionFrequentlyQuestions() {
 
 			<div className="w-[350ox] md:w-[850px] md:h-[762px] rounded-[16px] border border-[#474747] bg-[rgba(24,24,27,0.4)] p-[32px] flex flex-col items-center justify-start gap-[40px]">
 				<div className="flex flex-col items-center gap-[16px]">
-					<h1 className="w-[286px] md:max-w-[594px] text-[20px] md:text-[32px] font-bold text-white text-center text-shadow-white-glow md:leading-[35px] tracking-[0.15px]">
+					<h1 className="w-[286px] md:w-[594px] text-[20px] md:text-[32px] font-bold text-white text-center text-shadow-white-glow md:leading-[35px] tracking-[0.15px]">
 						Economize e dê o melhor cuidado para seu animal de estimação
 					</h1>
 					<span className="max-w-[286px] md:max-w-[526px] text-[16px] text-white leading-[24px] text-center tracking-[0.25px]">
@@ -310,7 +335,7 @@ export function SectionFrequentlyQuestions() {
 					<input
 						placeholder="Assunto"
 						{...form.register("assunto")}
-						className="w-[286px] md:w-[722px]h-[51px] bg-[#2D2D2D66] rounded-[8px] placeholder:text-white text-[16px] font-normal text-white text-center leading-none focus:outline-none"
+						className="w-[286px] md:w-[722px] h-[51px] bg-[#2D2D2D66] rounded-[8px] placeholder:text-white text-[16px] font-normal text-white text-center leading-none focus:outline-none"
 					/>
 					{form.formState.errors.assunto && (
 						<span className="text-red-500 text-sm mt-1">
@@ -339,9 +364,17 @@ export function SectionFrequentlyQuestions() {
 					</button>
 				</form>
 			</div>
-			<div className="hidden md:flex mt-[80px] w-[940px] h-[164px] rounded-[16px] bg-[rgba(24, 24, 27, 0.40)] border border-[#3D3D3D] p-[40px]">
-				{" "}
-				asdas
+			<div className="hidden md:flex items-center mt-[80px] w-[940px] h-[164px] rounded-[16px] bg-[rgba(24, 24, 27, 0.40)] border border-[#3D3D3D] p-[40px] gap-8">
+				<Image src={QrCode} alt="qr-code" />
+				<div className="flex flex-col gap-[12px]">
+					<span className="text-[18px] text-white">
+						Use a câmera do seu telefone para ler o QR code e baixar o
+						aplicativo da ID Pet Woof
+					</span>
+					<strong className="text-[18px] text-white">
+						Disponível para dispositivos iOS e Android.
+					</strong>
+				</div>
 			</div>
 		</section>
 	);
