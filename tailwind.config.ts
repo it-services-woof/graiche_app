@@ -57,11 +57,64 @@ const config: Config = {
 				sm: "calc(var(--radius) - 4px)",
 			},
 			boxShadow: {
-				"custom-pink": "0px 0px 50px 0px #FD0479",
+				"custom-pink": "0px 0px 40px 0px #FD0479",
 				"text-shadow": "0px 0px 53.5px #FD0479",
+			},
+			keyframes: {
+				"accordion-down": {
+					from: {
+						height: "0",
+					},
+					to: {
+						height: "var(--radix-accordion-content-height)",
+					},
+				},
+				"accordion-up": {
+					from: {
+						height: "var(--radix-accordion-content-height)",
+					},
+					to: {
+						height: "0",
+					},
+				},
+				moveRotateEllipse: {
+					"0%": {
+						transform: "translate(-10%, -5%) rotate(0deg)",
+					},
+					"12.5%": {
+						transform: "translate(-5%, -7.5%) rotate(45deg)",
+					},
+					"25%": {
+						transform: "translate(0%, -10%) rotate(90deg)",
+					},
+					"37.5%": {
+						transform: "translate(5%, -7.5%) rotate(135deg)",
+					},
+					"50%": {
+						transform: "translate(10%, -5%) rotate(180deg)",
+					},
+					"62.5%": {
+						transform: "translate(5%, -2.5%) rotate(225deg)",
+					},
+					"75%": {
+						transform: "translate(0%, 0%) rotate(270deg)",
+					},
+					"87.5%": {
+						transform: "translate(-5%, -2.5%) rotate(315deg)",
+					},
+					"100%": {
+						transform: "translate(-10%, -5%) rotate(360deg)",
+					},
+				},
+			},
+			animation: {
+				"accordion-down": "accordion-down 0.2s ease-out",
+				"accordion-up": "accordion-up 0.2s ease-out",
+				"move-rotate-ellipse": "moveRotateEllipse 12s infinite ease-in-out",
 			},
 		},
 	},
 	plugins: [require("tailwindcss-animate")],
 };
+
 export default config;

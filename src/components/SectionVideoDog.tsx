@@ -1,6 +1,6 @@
 export function SectionVideoDog() {
 	return (
-		<section className="relative flex items-center justify-center w-full h-[720px] md:h-[1117px] overflow-hidden">
+		<section className="relative flex items-center justify-center w-full h-[720px] md:h-[692px] overflow-hidden">
 			<div className="hidden md:block absolute inset-0 overflow-hidden">
 				<video
 					autoPlay

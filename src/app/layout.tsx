@@ -2,14 +2,14 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { SectionVideoHero } from "@/components/SectionVideoHero";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SectionApp } from "@/components/SectionApp";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Graiche",
-	description: "Graiche App",
+	title: "ID Pet Woof para Graiche",
+	description: "A Identidade Pet mais inteligente",
 };
 
 export default function RootLayout({
@@ -19,8 +19,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${inter.className} antialiased bg-[#080808]`}>
-				<SectionVideoHero />
+			<body
+				className={`${inter.className} flex flex-col items-center antialiased bg-[#080808]`}
+			>
+				<SectionApp />
 				{children}
 				<SpeedInsights />
 			</body>

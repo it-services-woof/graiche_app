@@ -51,18 +51,26 @@ export function SectionCalculator() {
 
 	useEffect(() => {
 		const gastoMensal = Number.parseFloat(inputValue) || 0;
-		const valorIdentidade = selectedPlan === "annual" ? 20.75 : 24.9;
+		let valorIdentidade = 0;
+
+		if (selectedPlan === "annual") {
+			valorIdentidade = 249.9;
+		} else {
+			valorIdentidade = 24.9 * 12;
+		}
 
 		if (gastoMensal === 0) {
 			setResult(0);
 		} else {
-			const calculo = (gastoMensal * 0.1 - valorIdentidade) * 12;
-			setResult(Number.parseFloat(calculo.toFixed(2)));
+			const totalEconomiaAnual = gastoMensal * 0.1 * 12;
+			const calculo = totalEconomiaAnual - valorIdentidade;
+			const finalResult = Math.max(Math.round(calculo), 0);
+			setResult(finalResult);
 		}
 	}, [inputValue, selectedPlan]);
 
 	return (
-		<section className="relative flex flex-col md:flex-row items-center justify-center w-full h-[1450px] md:h-[1117px] px-[40px] md:px-[160px] pt-[110px] md:pt-[140px]">
+		<section className="relative flex flex-col md:flex-row items-center justify-center w-full h-[1450px] md:h-[1017px] px-[40px] md:px-[160px] pt-[110px] md:pt-[140px]">
 			<div className="flex-1 flex items-start justify-start flex-col h-full gap-16">
 				<div className="flex flex-col gap-6">
 					<h1 className="text-[32px] md:text-[56px] font-bold text-white text-shadow-white-glow max-w-[350px] md:max-w-[472px] text-left leading-tight">
@@ -126,8 +134,10 @@ export function SectionCalculator() {
 							className="w-[296px] md:w-[496px] h-[72px] pl-3 bg-[#2D2D2D66] rounded-[8px] box-border placeholder:text-[44px] placeholder:font-bold placeholder:text-white text-[44px] font-bold text-white text-center flex items-center justify-center leading-none focus:outline-none"
 							value={inputValue}
 							onChange={(e) => {
-								const onlyNumbers = e.target.value.replace(/[^0-9]/g, "");
-								setInputValue(onlyNumbers);
+								const valor = e.target.value
+									.replace(/[^0-9.,]/g, "")
+									.replace(",", ".");
+								setInputValue(valor);
 							}}
 						/>
 					</div>

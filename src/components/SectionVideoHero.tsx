@@ -1,5 +1,3 @@
-import { Header } from "./Header";
-
 export function SectionVideoHero() {
 	return (
 		<section className="relative flex w-full h-[932px] md:h-[1117px] overflow-hidden">
@@ -30,9 +28,6 @@ export function SectionVideoHero() {
 						type="video/webm"
 					/>
 				</video>
-			</div>
-			<div className="relative z-10 w-full pt-[60px] px-[20px] md:pt-[90px] md:px-[160px]">
-				<Header />
 			</div>
 		</section>
 	);
