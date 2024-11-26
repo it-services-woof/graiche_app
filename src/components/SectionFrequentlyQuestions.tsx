@@ -17,6 +17,16 @@ import QrCode from "@/assets/qr-code.webp";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "./ui/select";
+import { Form, FormControl, FormField, FormItem } from "./ui/form";
+import { useToast } from "@/hooks/use-toast";
 
 const QuestionSchema = z.object({
 	name: z.string().min(1, { message: "Nome é obrigatório" }),
@@ -32,6 +42,8 @@ export function SectionFrequentlyQuestions() {
 	const form = useForm<QuestionType>({
 		resolver: zodResolver(QuestionSchema),
 	});
+
+	const { toast } = useToast();
 
 	const onSubmit = async (data: QuestionType) => {
 		const payload = {
@@ -55,13 +67,19 @@ export function SectionFrequentlyQuestions() {
 			);
 
 			console.log(response);
+
+			toast({
+				title: "Sua mensagem foi enviada com sucesso.",
+				description:
+					"Agradecemos o seu contato e, em breve, nossa equipe entrará em contato.",
+			});
 		} catch (error) {
 			console.error("Erro", error);
 		}
 	};
 
 	return (
-		<section className="relative flex flex-col items-center justify-start w-full py-[110px]">
+		<section className="relative flex flex-col items-center justify-start w-full pt-[110px]">
 			<div className="hidden md:absolute inset-0 -z-10 overflow-hidden">
 				<Image
 					src={EllipseApp}
@@ -281,7 +299,7 @@ export function SectionFrequentlyQuestions() {
 				</div>
 			</Container>
 
-			<div className="w-[350ox] md:w-[850px] md:h-[762px] rounded-[16px] border border-[#474747] bg-[rgba(24,24,27,0.4)] p-[32px] flex flex-col items-center justify-start gap-[40px]">
+			<div className="w-[350ox] md:w-[850px] rounded-[16px] border border-[#474747] bg-[rgba(24,24,27,0.4)] p-[32px] flex flex-col items-center justify-start gap-[40px]">
 				<div className="flex flex-col items-center gap-[16px]">
 					<h1 className="w-[286px] md:w-[594px] text-[20px] md:text-[32px] font-bold text-white text-center text-shadow-white-glow md:leading-[35px] tracking-[0.15px]">
 						Economize e dê o melhor cuidado para seu animal de estimação
@@ -291,78 +309,191 @@ export function SectionFrequentlyQuestions() {
 						para a sua comunidade pet? Entre em contato!
 					</span>
 				</div>
-				<form
-					onSubmit={form.handleSubmit(onSubmit)}
-					className="flex flex-col gap-[16px] items-center"
-				>
-					{/* Campo Nome */}
-					<input
-						placeholder="Nome"
-						{...form.register("name")}
-						className="w-[286px] md:w-[722px] h-[51px] bg-[#2D2D2D66] rounded-[8px] placeholder:text-white text-[16px] font-normal text-white text-center leading-none focus:outline-none"
-					/>
-					{form.formState.errors.name && (
-						<span className="text-red-500 text-sm mt-1">
-							{form.formState.errors.name.message}
-						</span>
-					)}
-
-					{/* Campo E-mail */}
-					<input
-						placeholder="E-mail"
-						{...form.register("email")}
-						className="w-[286px] md:w-[722px] h-[51px] bg-[#2D2D2D66] rounded-[8px] placeholder:text-white text-[16px] font-normal text-white text-center leading-none focus:outline-none"
-					/>
-					{form.formState.errors.email && (
-						<span className="text-red-500 text-sm mt-1">
-							{form.formState.errors.email.message}
-						</span>
-					)}
-
-					{/* Campo Telefone */}
-					<input
-						placeholder="Telefone"
-						{...form.register("telefone")}
-						className="w-[286px] md:w-[722px] h-[51px] bg-[#2D2D2D66] rounded-[8px] placeholder:text-white text-[16px] font-normal text-white text-center leading-none focus:outline-none"
-					/>
-					{form.formState.errors.telefone && (
-						<span className="text-red-500 text-sm mt-1">
-							{form.formState.errors.telefone.message}
-						</span>
-					)}
-
-					{/* Campo Assunto */}
-					<input
-						placeholder="Assunto"
-						{...form.register("assunto")}
-						className="w-[286px] md:w-[722px] h-[51px] bg-[#2D2D2D66] rounded-[8px] placeholder:text-white text-[16px] font-normal text-white text-center leading-none focus:outline-none"
-					/>
-					{form.formState.errors.assunto && (
-						<span className="text-red-500 text-sm mt-1">
-							{form.formState.errors.assunto.message}
-						</span>
-					)}
-
-					{/* Campo Mensagem */}
-					<textarea
-						placeholder="Por favor, forneça informações detalhadas sobre sua dúvida e como podemos ajudar"
-						{...form.register("mensagem")}
-						className="pt-8 w-[286px] md:w-[722px] h-[119px] bg-[#2D2D2D66] rounded-[8px] placeholder:text-white text-[16px] font-normal text-white text-center leading-none focus:outline-none resize-none"
-					/>
-					{form.formState.errors.mensagem && (
-						<span className="text-red-500 text-sm mt-1">
-							{form.formState.errors.mensagem.message}
-						</span>
-					)}
-
-					{/* Botão de Enviar */}
-					<button
-						type="submit"
-						className="w-[286px] md:w-[754px] h-[61px] rounded-[100px] shadow-[0_0_29px_0_#FD0479] bg-[#FD0479] mt-6 text-[18px] text-white"
+				<Form {...form}>
+					<form
+						onSubmit={form.handleSubmit(onSubmit)}
+						className="flex flex-col gap-[16px] items-center"
 					>
-						Entrar em contato
-					</button>
-				</form>
+						{/* Campo Nome */}
+						<input
+							placeholder="Nome"
+							{...form.register("name")}
+							className="w-[286px] md:w-[722px] h-[51px] bg-[#2D2D2D66] rounded-[8px] placeholder:text-white text-[16px] font-normal text-white text-center leading-none focus:outline-none"
+						/>
+						{form.formState.errors.name && (
+							<span className="text-red-500 text-sm">
+								{form.formState.errors.name.message}
+							</span>
+						)}
+
+						{/* Campo E-mail */}
+						<input
+							placeholder="E-mail"
+							{...form.register("email")}
+							className="w-[286px] md:w-[722px] h-[51px] bg-[#2D2D2D66] rounded-[8px] placeholder:text-white text-[16px] font-normal text-white text-center leading-none focus:outline-none"
+						/>
+						{form.formState.errors.email && (
+							<span className="text-red-500 text-sm">
+								{form.formState.errors.email.message}
+							</span>
+						)}
+
+						{/* Campo Telefone */}
+						<input
+							placeholder="Telefone"
+							{...form.register("telefone")}
+							className="w-[286px] md:w-[722px] h-[51px] bg-[#2D2D2D66] rounded-[8px] placeholder:text-white text-[16px] font-normal text-white text-center leading-none focus:outline-none"
+						/>
+						{form.formState.errors.telefone && (
+							<span className="text-red-500 text-sm">
+								{form.formState.errors.telefone.message}
+							</span>
+						)}
+						<FormField
+							control={form.control}
+							name="assunto"
+							render={({ field }) => (
+								<FormItem>
+									<FormControl>
+										<Select
+											onValueChange={field.onChange}
+											defaultValue={field.value}
+										>
+											<SelectTrigger className="w-[286px] md:w-[722px] h-[51px] bg-[#2D2D2D66] border-[#2D2D2D66] rounded-[8px] placeholder:text-white text-[16px] font-normal text-white placeholder:text-center">
+												<SelectValue placeholder="Assunto" />
+											</SelectTrigger>
+											<SelectContent className="text-[#A1A1AA] text-base rounded-[15px] border border-gray-600 bg-[rgba(24,24,27)] shadow-[2px_2px_10px_0px_rgba(0,0,0,0.5)]">
+												<SelectGroup>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="duvida"
+													>
+														Dúvidas sobre a ID Pet
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="atualizacao"
+													>
+														Atualização das informações do pet
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="pagamento"
+													>
+														Pagamento e fatura
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="pin_perdido"
+													>
+														Pin perdido ou roubado
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="dicas"
+													>
+														Dicas de cuidado pet
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="emergencia"
+													>
+														Procedimentos de Emergência
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="politica_friendly"
+													>
+														Consultas sobre a Política Pet Friendly
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="servicos"
+													>
+														Serviços e descontos de parceiros
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="sugestao"
+													>
+														Sugestões
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="suporte_tecnico"
+													>
+														Suporte técnico
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="politica_privacidade"
+													>
+														Dúvidas sobre a Política de Privacidade
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="feedback"
+													>
+														Feedback geral
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="reporte_incidente"
+													>
+														Reporte de incidente envolvendo animais
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="nao_encontrei"
+													>
+														Não encontrei minha comunidade
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="id_nao_residente"
+													>
+														Consultas sobre a ID Pet para não residentes
+													</SelectItem>
+													<SelectItem
+														className="w-full flex flex-col items-center justify-center focus:bg-transparent focus:text-[#A1A1AA] cursor-pointer"
+														value="outro"
+													>
+														Outro
+													</SelectItem>
+												</SelectGroup>
+											</SelectContent>
+										</Select>
+									</FormControl>
+								</FormItem>
+							)}
+						/>
+						{form.formState.errors.assunto && (
+							<span className="text-red-500 text-sm">
+								{form.formState.errors.assunto.message}
+							</span>
+						)}
+
+						{/* Campo Mensagem */}
+						<textarea
+							placeholder="Por favor, forneça informações detalhadas sobre sua dúvida e como podemos ajudar"
+							{...form.register("mensagem")}
+							className="pt-8 w-[286px] md:w-[722px] h-[119px] bg-[#2D2D2D66] rounded-[8px] placeholder:text-white text-[16px] font-normal text-white text-center leading-none focus:outline-none resize-none"
+						/>
+						{form.formState.errors.mensagem && (
+							<span className="text-red-500 text-sm">
+								{form.formState.errors.mensagem.message}
+							</span>
+						)}
+
+						{/* Botão de Enviar */}
+						<button
+							type="submit"
+							className="w-[286px] md:w-[754px] h-[61px] rounded-[100px] shadow-[0_0_29px_0_#FD0479] bg-[#FD0479] mt-6 text-[18px] text-white"
+						>
+							Entrar em contato
+						</button>
+					</form>
+				</Form>
 			</div>
 			<div className="hidden md:flex items-center mt-[80px] w-[940px] h-[164px] rounded-[16px] bg-[rgba(24, 24, 27, 0.40)] border border-[#3D3D3D] p-[40px] gap-8">
 				<Image src={QrCode} alt="qr-code" />

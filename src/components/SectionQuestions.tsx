@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Container } from "./Container";
 import CatIcon from "@/assets/cat-icon.svg";
 import SubmitIcon from "@/assets/submit-icon.svg";
-import Ellipse from "@/assets/ellipse-2.svg";
+import Ellipse from "@/assets/ellipse-app.svg";
 
 export function SectionQuestions() {
 	return (

@@ -1,3 +1,5 @@
+import withVideos from "next-videos";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
@@ -10,4 +12,6 @@ const nextConfig = {
 	},
 };
 
-export default nextConfig;
+const configWithVideos = withVideos();
+
+export default { ...nextConfig, ...configWithVideos };

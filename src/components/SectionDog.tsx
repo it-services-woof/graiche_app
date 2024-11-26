@@ -5,9 +5,9 @@ export function SectionDog() {
 				className="absolute inset-0 -z-10 block md:hidden"
 				style={{
 					background: `
-						linear-gradient(0deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%),
-						url('https://d3cxeuu31z1oec.cloudfront.net/images/dog.webp') lightgray -500.066px -209.676px / 296.255% 164.728% no-repeat
-					`,
+			linear-gradient(0deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%),
+			url('https://d3cxeuu31z1oec.cloudfront.net/images/dog.webp') no-repeat center center / cover
+		`,
 				}}
 			></div>
 
@@ -15,9 +15,9 @@ export function SectionDog() {
 				className="absolute inset-0 -z-10 hidden md:block"
 				style={{
 					background: `
-						linear-gradient(0deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%),
-						url('https://d3cxeuu31z1oec.cloudfront.net/images/dog.webp') lightgray -347.086px -278.683px / 130.933% 151.915% no-repeat
-					`,
+			linear-gradient(0deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%),
+			url('https://d3cxeuu31z1oec.cloudfront.net/images/dog.webp') no-repeat center center / cover
+		`,
 				}}
 			></div>
 
